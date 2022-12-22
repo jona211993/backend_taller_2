@@ -16,7 +16,9 @@ export class UsuariosRepository implements DatabaseRepository<UserEntity>{
 
     async list(query?: Query | undefined): Promise<UserEntity[]> {
         const repository = database.getRepository(UserEntity);
-        return repository.find();
+        return repository.find({
+            where: {...query},
+        });
     }
 
     async list_habilitados(query?: Query | undefined): Promise<UserEntity[]> {

@@ -9,15 +9,15 @@ import{
 
 import { UserEntity } from "../Entity/usuario.entity";
 
-@Entity()
-export class Rol {
+@Entity("roles")
+export class RoleEntity {
     @PrimaryGeneratedColumn()
     id_rol!: number;
 
     @Column()
     nombre!: string;
 
-    @OneToMany(type => UserEntity, user => user.rol)
+    @OneToMany(type => UserEntity, (user: UserEntity) => user.rol)
     user!: UserEntity[]
 
     @CreateDateColumn()

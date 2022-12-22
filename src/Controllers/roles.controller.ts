@@ -1,10 +1,10 @@
 import { Request, Response, NextFunction } from "express";
 import { DatabaseRepository } from "../declarations";
-import { Rol } from "../Entity/rol.entity";
+import { RoleEntity } from "../Entity/rol.entity";
 
 export class RolesController {
     // constructor
-    constructor(private repository: DatabaseRepository<Rol>) { }
+    constructor(private repository: DatabaseRepository<RoleEntity>) { }
 
     async create(req: Request, res: Response, next: NextFunction): Promise<void> {
         try {

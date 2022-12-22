@@ -8,7 +8,7 @@ import {
     PrimaryGeneratedColumn,
     UpdateDateColumn,
   } from "typeorm";
-  import { Rol } from "../Entity/rol.entity";
+  import { RoleEntity } from "../Entity/rol.entity";
   
   @Entity("usuarios")
   export class UserEntity extends BaseEntity {
@@ -32,6 +32,7 @@ import {
   
     @Column({
       length: 255,
+      select: false
     })
     contrasenia!: string;
   
@@ -43,17 +44,19 @@ import {
     })
     celular!: string;
   
-    @ManyToOne((type) => Rol, (rol) => rol.id_rol)
+    @ManyToOne((type: any) => RoleEntity, (rol: RoleEntity) => rol.id_rol)
     @JoinColumn({name: 'id_rol'})
-    rol!: Rol;
+    rol!: RoleEntity;
   
     @Column({
       length: 25,
+      default: "habilitado"
     })
     estado!: string;
   
     @Column({
       length: 127,
+      default: ""
     })
     motivo!: string;
   
